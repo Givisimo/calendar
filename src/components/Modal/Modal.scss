@@ -1,0 +1,63 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(39, 40, 41, 0.85);
+  z-index: 1200;
+}
+
+.modal-test {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 510px;
+  background-color: #fbfbfb;
+  padding: 25px;
+}
+
+.input-label-style {
+  width: 220px;
+  font-weight: 500;
+
+}
+
+.input-style {
+  @extend .input-label-style;
+  letter-spacing: 0.66px;
+  line-height: 56px;
+  padding-left: 20px;
+  font-size: 22px;
+  color: #3d3d3d;
+  border:1px solid  #fdd000;
+}
+
+.label-style {
+  @extend .input-label-style;
+  font-size: 20px;
+  letter-spacing: -0.44px;
+  color: #a2a2a2;
+}
+
+.button-exit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0;
+  background-color:  #fdd000;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-decoration: none;
+  text-align: center;
+  color:  #3d3d3d;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: normal;
+
+}

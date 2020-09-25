@@ -1,0 +1,33 @@
+@import './src/components/Calendar/Calendar';
+
+.page-wrapper {
+  background-image: url('../../assets/images/bg-image.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.text-wrapper {
+  margin: 192px 33px 200px 0;
+  text-align: right;
+  width: 500px;
+}
+
+.text-heading {
+  color: #fdd000;
+  letter-spacing: 3.5px;
+  line-height: 64px;
+  font-size: 50px;
+  margin-bottom: 44px;
+}
+
+.text-text {
+  color: #dfdfdf;
+  letter-spacing: 0.6px;
+  line-height: 40px;
+  font-size: 30px;
+}
+
+.custom {
+  background-color: #272829;
+}

@@ -1,0 +1,88 @@
+@import '../../../node_modules/react-day-picker/lib/style';
+
+.calendar-wrapper {
+  margin: 200px 100px;
+}
+
+.DayPicker-wrapper {
+  color: #dfdfdf;
+}
+
+.btn-wrapper {
+  color: #dfdfdf;
+  opacity: 0.67;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.DayPicker-Month {
+  position: relative;
+  margin: 0;
+}
+
+.DayPicker-Weekdays {
+  position: absolute;
+  width: 100%;
+  bottom: -50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.43);
+}
+
+.DayPicker-WeekdaysRow {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.DayPicker-Weekday {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.DayPicker-Body {
+  margin-top: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.43);
+  border-top: 1px solid rgba(255, 255, 255, 0.43);
+  width: 385px;
+}
+
+.DayPicker-Caption {
+  text-align: center;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.DayPicker-Day {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  width: 50px;
+  height: 50px;
+  &:hover {
+    border-radius: 0;
+    background-color: #fdd000;
+    color: #3d3d3d;
+  }
+}
+
+.DayPicker-Day--outside {
+  color: #dfdfdf;
+  cursor: pointer;
+  opacity: 0.24;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled)
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: #fdd000;
+}
+
+.position-absolute {
+  width: 100%;
+  top: -5px;
+}
