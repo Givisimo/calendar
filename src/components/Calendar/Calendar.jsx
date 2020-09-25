@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
-import './Calendar.scss';
 import Modal from '../Modal/Modal';
 import { connect } from 'react-redux';
 import recordDate from '../../redux/actions/actions';
+import './Calendar.scss';
 
 const Navbar = ({ onPreviousClick, onNextClick }) => {
   return (
