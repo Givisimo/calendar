@@ -4,7 +4,7 @@ import './Home.scss';
 
 const Home = () => {
   return (
-    <div className=" container-fluid no-gutters">
+    <div className="container-fluid no-gutters">
       <div className="row">
         <div className="col-8 justify-content-end row page-wrapper no-gutters">
           <div className="text-wrapper">
