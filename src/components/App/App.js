@@ -14,7 +14,7 @@ import './App.scss';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={routes.BASENAME}>
       <Header />
       <Switch>
         <Route path={routes.ABOUT} component={About} />

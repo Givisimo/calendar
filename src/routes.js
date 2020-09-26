@@ -1,5 +1,6 @@
 const routes = {
-  HOME: '/',
+  BASENAME: '/calendar',
+  HOME: '/home',
   ABOUT: '/about',
 };
 
