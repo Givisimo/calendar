@@ -18,10 +18,8 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className=" col-4 no-gutters custom">
-          <div className="calendar-wrapper">
-            <Calendar />
-          </div>
+        <div className=" col-4  custom">
+          <Calendar />
         </div>
       </div>
     </div>

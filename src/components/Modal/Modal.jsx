@@ -64,7 +64,7 @@ function Modal({ date, month, day, setShowModal }) {
             type="text"
             id="date"
             className=" input-style"
-            value={`${date}th ${days[day]}`}
+            value={`${date}th ${days[day].long}`}
             readOnly
             disabled
           />
