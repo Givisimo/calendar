@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import months from '../../utils/months';
-import days from '../../utils/days';
+import months from '../../utils/calendar/months';
+import days from '../../utils/calendar/days';
 import { connect } from 'react-redux';
 import { getDate, getDay, getMonth } from '../../redux/selector/selector';
 import './Modal.scss';

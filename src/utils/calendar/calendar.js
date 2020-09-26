@@ -86,7 +86,19 @@ const calcCalendarDates = (year, month) => {
     return findNextDates(end);
   };
 
-  return [...calendarStart(), ...thisMonth(), ...calendarEnds()];
+  const calendarDatesArr = [
+    ...calendarStart(),
+    ...thisMonth(),
+    ...calendarEnds(),
+  ];
+  return [
+    [...calendarDatesArr.splice(0, 7)],
+    [...calendarDatesArr.splice(0, 7)],
+    [...calendarDatesArr.splice(0, 7)],
+    [...calendarDatesArr.splice(0, 7)],
+    [...calendarDatesArr.splice(0, 7)],
+    [...calendarDatesArr.splice(0, 7)],
+  ];
 };
 
 export default calcCalendarDates;

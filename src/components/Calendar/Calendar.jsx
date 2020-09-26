@@ -4,21 +4,20 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import recordDate from '../../redux/actions/actions';
 import calcCalendarDates from '../../utils/calendar/calendar';
-import allMonths from '../../utils/months';
-import days from '../../utils/days';
+import allMonths from '../../utils/calendar/months';
+import days from '../../utils/calendar/days';
 import './Calendar.scss';
 
 const Calendar = ({ recordDate }) => {
   const [showModal, setShowModal] = useState(false);
-
   const changeModalState = () => {
     setShowModal(prevState => !prevState);
   };
 
   const [newMonth, setNewMonth] = useState(new Date().getMonth());
-
   const [newYear, setNewYear] = useState(new Date().getFullYear());
 
+  const weeks = calcCalendarDates(newYear, newMonth);
   const clickDay = event => {
     const month =
       Number(event.target.getAttribute(`month-index`)) === newMonth
@@ -27,16 +26,6 @@ const Calendar = ({ recordDate }) => {
     recordDate(event.target.innerHTML, event.target.id, month);
     changeModalState();
   };
-
-  const month = calcCalendarDates(newYear, newMonth);
-  const weeks = [
-    [...month.splice(0, 7)],
-    [...month.splice(0, 7)],
-    [...month.splice(0, 7)],
-    [...month.splice(0, 7)],
-    [...month.splice(0, 7)],
-    [...month.splice(0, 7)],
-  ];
 
   const calcNextMonth = () =>
     setNewMonth(prevState => {
@@ -78,18 +67,16 @@ const Calendar = ({ recordDate }) => {
 
   return (
     <div className="calendar-wrapper">
-      <div className="head-wrapper d-flex text-nowrap justify-content-between">
+      <div className="head-wrapper d-flex  justify-content-between align-items-center">
         <button className=" btn-wrapper  " onClick={calcPrevRender}>
           &#60;
         </button>
-        <div className="text-center calendar-heading ">{`${
-          allMonths[newMonth]
-        } ${newYear}`}</div>
+        <div className=" calendar-heading ">{`${allMonths[newMonth]} `}</div>
         <button className=" btn-wrapper  " onClick={calcNextRender}>
           &#62;
         </button>
       </div>
-      <div className="">
+      <div>
         <div className="dates-container" onClick={event => clickDay(event)}>
           {weeks.map((arr, indexWeeks) => {
             return (
