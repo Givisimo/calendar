@@ -1,83 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../Modal/Modal';
-import { connect } from 'react-redux';
+
 import { v4 as uuidv4 } from 'uuid';
-import recordDate from '../../redux/actions/actions';
-import calcCalendarDates from '../../utils/calendar/calendar';
+
 import allMonths from '../../utils/calendar/months';
 import days from '../../utils/calendar/days';
 import './Calendar.scss';
 
-const Calendar = ({ recordDate }) => {
-  const [showModal, setShowModal] = useState(false);
-  const changeModalState = () => {
-    setShowModal(prevState => !prevState);
-  };
-
-  const [newMonth, setNewMonth] = useState(new Date().getMonth());
-  const [newYear, setNewYear] = useState(new Date().getFullYear());
-
-  const weeks = calcCalendarDates(newYear, newMonth);
-  const clickDay = event => {
-    const month =
-      Number(event.target.getAttribute(`month-index`)) === newMonth
-        ? newMonth
-        : Number(event.target.getAttribute(`month-index`));
-    recordDate(event.target.innerHTML, event.target.id, month);
-    changeModalState();
-  };
-
-  const calcNextMonth = () =>
-    setNewMonth(prevState => {
-      return prevState === 11 ? 0 : prevState + 1;
-    });
-
-  const calcPrevMonth = () => {
-    setNewMonth(prevState => {
-      return prevState === 0 ? 11 : prevState - 1;
-    });
-  };
-
-  const calcNextYear = () => {
-    return newMonth === 11 ? setNewYear(prevState => prevState + 1) : null;
-  };
-
-  const calcPrevYear = () => {
-    return newMonth === 0 ? setNewYear(prevState => prevState - 1) : null;
-  };
-
-  const calcNextRender = () => {
-    calcNextMonth();
-    calcNextYear();
-  };
-
-  const calcPrevRender = () => {
-    calcPrevMonth();
-    calcPrevYear();
-  };
-
-  const calcMonthIndex = (indexWeeks, isOutsideRange) => {
-    if (!isOutsideRange) {
-      return newMonth;
-    } else if (indexWeeks < 2) {
-      return newMonth - 1;
-    }
-    return newMonth === 11 ? 0 : newMonth + 1;
-  };
-
+const Calendar = ({
+  onDayClick,
+  calcPrevRender,
+  calcNextRender,
+  calcMonthIndex,
+  changeModalState,
+  showModal,
+  weeks,
+  month,
+}) => {
   return (
     <div className="calendar-wrapper">
       <div className="head-wrapper d-flex  justify-content-between align-items-center">
         <button className=" btn-wrapper  " onClick={calcPrevRender}>
           &#60;
         </button>
-        <div className=" calendar-heading ">{`${allMonths[newMonth]} `}</div>
+        <div className=" calendar-heading ">{`${allMonths[month]} `}</div>
         <button className=" btn-wrapper  " onClick={calcNextRender}>
           &#62;
         </button>
       </div>
       <div>
-        <div className="dates-container" onClick={event => clickDay(event)}>
+        <div className="dates-container" onClick={event => onDayClick(event)}>
           {weeks.map((arr, indexWeeks) => {
             return (
               <div className="d-flex justify-content-between " key={uuidv4()}>
@@ -115,13 +67,4 @@ const Calendar = ({ recordDate }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  recordDate: (date, day, month) => {
-    dispatch(recordDate(date, day, month));
-  },
-});
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Calendar);
+export default Calendar;

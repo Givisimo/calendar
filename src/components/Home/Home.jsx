@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from '../Calendar/Calendar';
+import CalendarContainer from '../Calendar/CalendarContainer';
 import './Home.scss';
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
           </div>
         </div>
         <div className=" col-4  custom">
-          <Calendar />
+          <CalendarContainer />
         </div>
       </div>
     </div>

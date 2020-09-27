@@ -91,6 +91,7 @@ const calcCalendarDates = (year, month) => {
     ...thisMonth(),
     ...calendarEnds(),
   ];
+
   return [
     [...calendarDatesArr.splice(0, 7)],
     [...calendarDatesArr.splice(0, 7)],

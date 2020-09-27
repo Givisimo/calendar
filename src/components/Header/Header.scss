@@ -1,3 +1,5 @@
+@import './node_modules/bootstrap/scss/bootstrap';
+
 .header-wrapper {
   padding: 30px 110px;
   height: 150px;
@@ -41,4 +43,14 @@
   height: 14px;
   border-radius: 50%;
   background-color: #fdd000;
+}
+
+.custom-display {
+  display: none !important;
+}
+
+@media (max-width: 800px) {
+  .custom-display {
+       display: block !important;
+  }
 }
