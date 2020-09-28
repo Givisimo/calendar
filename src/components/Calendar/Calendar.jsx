@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from '../Modal/Modal';
-
 import { v4 as uuidv4 } from 'uuid';
-
 import allMonths from '../../utils/calendar/months';
 import days from '../../utils/calendar/days';
 import './Calendar.scss';

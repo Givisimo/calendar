@@ -38,24 +38,24 @@ function Modal({ date, month, day, setShowModal }) {
       role="presentation"
       className="overlay"
     >
-      <form className="modal-test">
+      <form className="modal-custom">
         <button type="button" className="button-exit" onClick={setShowModal}>
           &#215;
         </button>
-        <div className="d-flex justify-content-between">
-          <label className="label-style " htmlFor="month">
+        <div className=" row ">
+          <label className="col label-style p-0 mr-2" htmlFor="month">
             Month
           </label>
 
-          <label className="label-style " htmlFor="date">
+          <label className="col label-style p-0" htmlFor="date">
             Day
           </label>
         </div>
-        <div className="d-flex justify-content-between">
+        <div className="row ">
           <input
             type="text"
             id="month"
-            className=" input-style"
+            className=" input-style col pr-0 mr-2"
             value={months[month]}
             readOnly
             disabled
@@ -63,7 +63,7 @@ function Modal({ date, month, day, setShowModal }) {
           <input
             type="text"
             id="date"
-            className=" input-style"
+            className=" input-style col pr-0"
             value={`${date}th ${days[day].long}`}
             readOnly
             disabled

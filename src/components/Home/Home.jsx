@@ -4,11 +4,11 @@ import './Home.scss';
 
 const Home = () => {
   return (
-    <div className="container-fluid no-gutters">
+    <div className="container-fluid m-0 p-0">
       <div className="row">
-        <div className="col-8 justify-content-end row page-wrapper no-gutters">
+        <div className="col-12  col-lg-7 justify-content-end row page-wrapper  m-0">
           <div className="text-wrapper">
-            <h3 className="text-heading text-uppercase font-weight-bold">
+            <h3 className="text-heading text-uppercase font-weight-bold ">
               Choose the day
               <br /> for the meeting
             </h3>
@@ -18,7 +18,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-        <div className=" col-4  custom">
+        <div className=" col-12 col-lg-5 custom">
           <CalendarContainer />
         </div>
       </div>

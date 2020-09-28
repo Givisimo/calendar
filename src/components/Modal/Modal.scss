@@ -11,30 +11,30 @@
   z-index: 1200;
 }
 
-.modal-test {
+.modal-custom {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 510px;
+  width: 400px;
   background-color: #fbfbfb;
   padding: 25px;
 }
 
 .input-label-style {
-  width: 220px;
-  font-weight: 500;
 
+  font-weight: 500;
 }
 
 .input-style {
   @extend .input-label-style;
   letter-spacing: 0.66px;
   line-height: 56px;
+  padding-right: 0;
   padding-left: 20px;
-  font-size: 22px;
+  font-size: 20px;
   color: #3d3d3d;
-  border:1px solid  #fdd000;
+  border: 1px solid #fdd000;
 }
 
 .label-style {
@@ -49,15 +49,20 @@
   right: 0;
   top: 0;
   border: 0;
-  background-color:  #fdd000;
+  background-color: #fdd000;
   width: 28px;
   height: 28px;
   line-height: 28px;
   text-decoration: none;
   text-align: center;
-  color:  #3d3d3d;
+  color: #3d3d3d;
   font-size: 30px;
   font-style: normal;
   font-weight: normal;
+}
 
+@media (min-width: 992px) {
+  .modal-custom {
+    width: 510px;
+  }
 }

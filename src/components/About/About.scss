@@ -1,6 +1,5 @@
 #main {
   margin-top: 100px;
-  max-width: 1255px;
 }
 
 .heading {
@@ -16,4 +15,10 @@
   letter-spacing: -0.4px;
   line-height: 36px;
   color: #3d3d3d;
+}
+
+@media (min-width: 1200px) {
+  #main {
+    max-width: 1255px;
+  }
 }
