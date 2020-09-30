@@ -1,5 +1,8 @@
 * {
   font-family: 'Rubik', sans-serif;
+  & ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 body {

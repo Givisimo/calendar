@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import recordDate from '../../redux/actions/actions';
 import calcCalendarDates from '../../utils/calendar/calcCalendarDates';
 import Calendar from './Calendar';
+import Modal from '../Modal/Modal';
 
 const CalendarContainer = ({ recordDate }) => {
   const [showModal, setShowModal] = useState(false);
-  const changeModalState = () => {
-    setShowModal(prevState => !prevState);
-  };
+  const changeModalState = () => setShowModal(prevState => !prevState);
 
   const [newMonth, setNewMonth] = useState(new Date().getMonth());
   const [newYear, setNewYear] = useState(new Date().getFullYear());
 
   const weeks = calcCalendarDates(newYear, newMonth);
+
   const onDayClick = event => {
     const month =
       Number(event.target.getAttribute(`month-index`)) === newMonth
@@ -24,23 +24,17 @@ const CalendarContainer = ({ recordDate }) => {
   };
 
   const calcNextMonth = () =>
-    setNewMonth(prevState => {
-      return prevState === 11 ? 0 : prevState + 1;
-    });
+    setNewMonth(prevState => (prevState === 11 ? 0 : prevState + 1));
 
   const calcPrevMonth = () => {
-    setNewMonth(prevState => {
-      return prevState === 0 ? 11 : prevState - 1;
-    });
+    setNewMonth(prevState => (prevState === 0 ? 11 : prevState - 1));
   };
 
-  const calcNextYear = () => {
-    return newMonth === 11 ? setNewYear(prevState => prevState + 1) : null;
-  };
+  const calcNextYear = () =>
+    newMonth === 11 ? setNewYear(prevState => prevState + 1) : null;
 
-  const calcPrevYear = () => {
-    return newMonth === 0 ? setNewYear(prevState => prevState - 1) : null;
-  };
+  const calcPrevYear = () =>
+    newMonth === 0 ? setNewYear(prevState => prevState - 1) : null;
 
   const calcNextRender = () => {
     calcNextMonth();
@@ -62,16 +56,18 @@ const CalendarContainer = ({ recordDate }) => {
   };
 
   return (
-    <Calendar
-      calcPrevRender={calcPrevRender}
-      calcNextRender={calcNextRender}
-      onDayClick={onDayClick}
-      weeks={weeks}
-      calcMonthIndex={calcMonthIndex}
-      changeModalState={changeModalState}
-      showModal={showModal}
-      month={newMonth}
-    />
+    <>
+      <Calendar
+        calcPrevRender={calcPrevRender}
+        calcNextRender={calcNextRender}
+        onDayClick={onDayClick}
+        weeks={weeks}
+        year={newYear}
+        calcMonthIndex={calcMonthIndex}
+        month={newMonth}
+      />
+      {showModal && <Modal changeModalState={changeModalState} />}
+    </>
   );
 };
 

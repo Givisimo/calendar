@@ -1,5 +1,4 @@
 import React from 'react';
-import Modal from '../Modal/Modal';
 import { v4 as uuidv4 } from 'uuid';
 import allMonths from '../../utils/calendar/months';
 import days from '../../utils/calendar/days';
@@ -10,10 +9,9 @@ const Calendar = ({
   calcPrevRender,
   calcNextRender,
   calcMonthIndex,
-  changeModalState,
-  showModal,
   weeks,
   month,
+  year,
 }) => {
   return (
     <div className="calendar-wrapper">
@@ -21,13 +19,15 @@ const Calendar = ({
         <button className=" btn-wrapper  " onClick={calcPrevRender}>
           &#60;
         </button>
-        <div className=" calendar-heading ">{`${allMonths[month]} `}</div>
+        <div className=" calendar-heading ">{`${
+          allMonths[month]
+        } ${year} `}</div>
         <button className=" btn-wrapper  " onClick={calcNextRender}>
           &#62;
         </button>
       </div>
       <div>
-        <div className="dates-container" onClick={event => onDayClick(event)}>
+        <div className="dates-container" onClick={onDayClick}>
           {weeks.map((arr, indexWeeks) => {
             return (
               <div className="d-flex justify-content-between " key={uuidv4()}>
@@ -60,7 +60,6 @@ const Calendar = ({
           ))}
         </div>
       </div>
-      {showModal && <Modal setShowModal={changeModalState} />}
     </div>
   );
 };

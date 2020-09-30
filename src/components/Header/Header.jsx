@@ -23,16 +23,16 @@ const Header = () => {
     <header>
       <Media
         queries={{ mobile: { maxWidth: 767 } }}
-        onChange={matches => resetMenuState()}
+        onChange={() => resetMenuState()}
       >
         {matches =>
           matches.mobile ? (
             <div className="row header-wrapper justify-content-between no-gutters  ">
               <NavLink
                 to={routes.HOME}
-                className="link col-auto align-self-center"
+                className="link col-auto align-self-center "
               >
-                <img src={logo} alt={'Logo'} height={50} />
+                <img src={logo} alt={'Logo'} className="logo" />
               </NavLink>
               <div className="col-auto row align-content-around no-gutters ">
                 {menu && (
@@ -72,8 +72,8 @@ const Header = () => {
             </div>
           ) : (
             <div className="row header-wrapper justify-content-between no-gutters align-content-around ">
-              <NavLink to={routes.HOME} className="link col-auto">
-                <img src={logo} alt={'Logo'} height={50} />
+              <NavLink to={routes.HOME} className="link col-auto ">
+                <img src={logo} alt={'Logo'} className="logo" />
               </NavLink>
               <nav className="col-auto row align-content-around no-gutters ">
                 <ul className="row list-unstyled no-gutters font-weight-normal">

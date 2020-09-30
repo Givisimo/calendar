@@ -12,10 +12,14 @@
   font-weight: 500;
 }
 
+.logo {
+  height: 40px;
+}
+
 .link {
   display: block;
   text-decoration: none;
-  color: #000;
+  color: #3d3d3d;
   letter-spacing: 0.56px;
   position: relative;
   &:focus,
@@ -27,19 +31,17 @@
   }
 }
 
-.active-link{
-  color:#fdd000;
+.active-link {
+  color: #fdd000;
 }
 
 .icon-size {
   font-size: 30px;
 }
 
-
-
-@media (min-width: 769px){
+@media (min-width: 769px) {
   .header-wrapper {
-        height: 150px;
+    height: 150px;
   }
 
   .list-item {
@@ -48,6 +50,10 @@
     &:last-child {
       margin-left: 70px;
     }
+  }
+
+  .logo {
+    height: 50px;
   }
 
   .link {
@@ -60,8 +66,8 @@
     }
   }
 
-  .active-link{
-    color:#000;
+  .active-link {
+    color: #3d3d3d;
   }
 
   .active-link::after {

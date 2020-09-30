@@ -8,7 +8,7 @@ import './Modal.scss';
 
 const MODAL_ROOT = document.querySelector('#modal-root');
 
-function Modal({ date, month, day, setShowModal }) {
+function Modal({ date, month, day, changeModalState }) {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
 
@@ -19,7 +19,7 @@ function Modal({ date, month, day, setShowModal }) {
 
   const handleKeyPress = e => {
     if (e.code === 'Escape') {
-      setShowModal();
+      changeModalState();
     }
   };
 
@@ -27,7 +27,7 @@ function Modal({ date, month, day, setShowModal }) {
 
   const handleBackdropClick = e => {
     if (e.target === backdropRef.current) {
-      setShowModal();
+      changeModalState();
     }
   };
 
@@ -39,11 +39,15 @@ function Modal({ date, month, day, setShowModal }) {
       className="overlay"
     >
       <form className="modal-custom">
-        <button type="button" className="button-exit" onClick={setShowModal}>
+        <button
+          type="button"
+          className="button-exit"
+          onClick={changeModalState}
+        >
           &#215;
         </button>
-        <div className=" row ">
-          <label className="col label-style p-0 mr-2" htmlFor="month">
+        <div className=" row no-gutters">
+          <label className="col label-style p-0 mr-3" htmlFor="month">
             Month
           </label>
 
@@ -51,11 +55,11 @@ function Modal({ date, month, day, setShowModal }) {
             Day
           </label>
         </div>
-        <div className="row ">
+        <div className="row no-gutters">
           <input
             type="text"
             id="month"
-            className=" input-style col pr-0 mr-2"
+            className=" input-style  pl-3 col mr-3"
             value={months[month]}
             readOnly
             disabled
@@ -63,7 +67,7 @@ function Modal({ date, month, day, setShowModal }) {
           <input
             type="text"
             id="date"
-            className=" input-style col pr-0"
+            className=" input-style  pl-3 col"
             value={`${date}th ${days[day].long}`}
             readOnly
             disabled
