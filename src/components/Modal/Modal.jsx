@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import months from '../../utils/months';
-import days from '../../utils/days';
+import months from '../../utils/calendar/months';
+import days from '../../utils/calendar/days';
 import { connect } from 'react-redux';
 import { getDate, getDay, getMonth } from '../../redux/selector/selector';
 import './Modal.scss';
 
 const MODAL_ROOT = document.querySelector('#modal-root');
 
-function Modal({ date, month, day, setShowModal }) {
+function Modal({ date, month, day, changeModalState }) {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
 
@@ -19,7 +19,7 @@ function Modal({ date, month, day, setShowModal }) {
 
   const handleKeyPress = e => {
     if (e.code === 'Escape') {
-      setShowModal();
+      changeModalState();
     }
   };
 
@@ -27,7 +27,7 @@ function Modal({ date, month, day, setShowModal }) {
 
   const handleBackdropClick = e => {
     if (e.target === backdropRef.current) {
-      setShowModal();
+      changeModalState();
     }
   };
 
@@ -38,24 +38,28 @@ function Modal({ date, month, day, setShowModal }) {
       role="presentation"
       className="overlay"
     >
-      <form className="modal-test">
-        <button type="button" className="button-exit" onClick={setShowModal}>
+      <form className="modal-custom">
+        <button
+          type="button"
+          className="button-exit"
+          onClick={changeModalState}
+        >
           &#215;
         </button>
-        <div className="d-flex justify-content-between">
-          <label className="label-style " htmlFor="month">
+        <div className=" row no-gutters">
+          <label className="col label-style p-0 mr-3" htmlFor="month">
             Month
           </label>
 
-          <label className="label-style " htmlFor="date">
+          <label className="col label-style p-0" htmlFor="date">
             Day
           </label>
         </div>
-        <div className="d-flex justify-content-between">
+        <div className="row no-gutters">
           <input
             type="text"
             id="month"
-            className=" input-style"
+            className=" input-style  pl-3 col mr-3"
             value={months[month]}
             readOnly
             disabled
@@ -63,8 +67,8 @@ function Modal({ date, month, day, setShowModal }) {
           <input
             type="text"
             id="date"
-            className=" input-style"
-            value={`${date}th ${days[day]}`}
+            className=" input-style  pl-3 col"
+            value={`${date}th ${days[day].long}`}
             readOnly
             disabled
           />

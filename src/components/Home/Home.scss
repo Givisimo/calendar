@@ -1,6 +1,6 @@
-@import './src/components/Calendar/Calendar';
+@import './node_modules/bootstrap/scss/bootstrap';
 
-.page-wrapper {
+.left-col-wrapper {
   background-image: url('../../assets/images/bg-image.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -8,7 +8,7 @@
 }
 
 .text-wrapper {
-  margin: 192px 33px 200px 0;
+  margin: 100px 33px 100px 0;
   text-align: right;
   width: 500px;
 }
@@ -17,7 +17,7 @@
   color: #fdd000;
   letter-spacing: 3.5px;
   line-height: 64px;
-  font-size: 50px;
+  font-size: 40px;
   margin-bottom: 44px;
 }
 
@@ -25,9 +25,22 @@
   color: #dfdfdf;
   letter-spacing: 0.6px;
   line-height: 40px;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .custom {
   background-color: #272829;
+}
+
+@media (min-width: 769px) {
+  .text-wrapper {
+    margin: 192px 33px 200px 0;
+  }
+  .text-heading {
+    font-size: 50px;
+  }
+
+  .text-text {
+  font-size: 30px;
+  }
 }

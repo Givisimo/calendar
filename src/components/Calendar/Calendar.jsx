@@ -1,63 +1,67 @@
-import React, { useState } from 'react';
-import DayPicker from 'react-day-picker';
-import Modal from '../Modal/Modal';
-import { connect } from 'react-redux';
-import recordDate from '../../redux/actions/actions';
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import allMonths from '../../utils/calendar/months';
+import days from '../../utils/calendar/days';
 import './Calendar.scss';
 
-const Navbar = ({ onPreviousClick, onNextClick }) => {
+const Calendar = ({
+  onDayClick,
+  calcPrevRender,
+  calcNextRender,
+  calcMonthIndex,
+  weeks,
+  month,
+  year,
+}) => {
   return (
-    <div className="d-flex justify-content-between position-absolute">
-      <button
-        className="bg-transparent border-0 btn-wrapper"
-        onClick={() => onPreviousClick()}
-      >
-        &#60;
-      </button>
-      <button
-        className="bg-transparent border-0 btn-wrapper"
-        onClick={() => onNextClick()}
-      >
-        &#62;
-      </button>
+    <div className="calendar-wrapper">
+      <div className="head-wrapper d-flex  justify-content-between align-items-center">
+        <button className=" btn-wrapper  " onClick={calcPrevRender}>
+          &#60;
+        </button>
+        <div className=" calendar-heading ">{`${
+          allMonths[month]
+        } ${year} `}</div>
+        <button className=" btn-wrapper  " onClick={calcNextRender}>
+          &#62;
+        </button>
+      </div>
+      <div>
+        <div className="dates-container" onClick={onDayClick}>
+          {weeks.map((arr, indexWeeks) => {
+            return (
+              <div className="d-flex justify-content-between " key={uuidv4()}>
+                {arr.map(({ date, outsideRange }, index) => {
+                  return (
+                    <div
+                      className={`text-center cell align-items-center ${
+                        outsideRange ? 'calendar-day-outside' : 'calendar-day'
+                      }`}
+                      key={uuidv4()}
+                      id={index}
+                      month-index={calcMonthIndex(indexWeeks, outsideRange)}
+                    >
+                      {date}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+        <div className="weekday-row d-flex justify-content-between">
+          {weeks[0].map((__, i) => (
+            <div
+              className="text-center cell d-flex align-items-center justify-content-center"
+              key={uuidv4()}
+            >
+              {days[i].short}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
-const Calendar = ({ recordDate }) => {
-  const [showModal, setShowModal] = useState(false);
-
-  const changeModalState = () => {
-    setShowModal(prevState => !prevState);
-  };
-  const clickDay = clickedDay => {
-    recordDate(
-      clickedDay.getDate(),
-      clickedDay.getDay(),
-      clickedDay.getMonth(),
-    );
-    changeModalState();
-  };
-  return (
-    <>
-      <DayPicker
-        navbarElement={<Navbar />}
-        showOutsideDays
-        onDayClick={clickDay}
-        fixedWeeks={true}
-      />
-      {showModal && <Modal setShowModal={changeModalState} />}
-    </>
-  );
-};
-
-const mapDispatchToProps = dispatch => ({
-  recordDate: (date, day, month) => {
-    dispatch(recordDate(date, day, month));
-  },
-});
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Calendar);
+export default Calendar;
